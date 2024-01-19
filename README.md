@@ -40,22 +40,26 @@
 
 **Tech Stack:**
 
-- Frontend:
+* Frontend:
 
-    React.js for building an interactive and responsive user interface.
+- React.js for building an interactive and responsive user interface.
     
-- Backend:
+* Backend:
 
-    Node.js and Express.js for server-side development.
-    MongoDB for the NoSQL database to store notes and user data.
+- Node.js and Express.js for server-side development.
+- MongoDB for the NoSQL database to store notes and user data.
 
-- Authentication:
+* Authentication:
 
-    JSON Web Tokens (JWT) for secure user authentication.
+- JSON Web Tokens (JWT) for secure user authentication.
 
-- Real-time Collaboration:
+* Real-time Collaboration:
 
-    Socket.io for establishing real-time communication channels.
+- Socket.io for establishing real-time communication channels.
+
+* Deployment:
+
+- Deployment on Netlify and AWS.
 
 **Future Enhancements:**
 
