@@ -78,7 +78,7 @@ app.post("/saved_notes", (req, res) => {
     res.send("Note added");
 });
 //upadte rating
-app.post("/saved_notes/:tag/rating", (req, res) => {
+app.post("/saved_notes/:tag/ -rating", (req, res) => {
     const tag = saved_notes.cse.find((c) => c.tag === req.params.tag);
     if (!tag) {
         return res.status(404).json({ error: "Tag not found" });
@@ -97,7 +97,7 @@ app.post("/saved_notes/:tag/rating", (req, res) => {
         res.status(500).json({ error: "Unexpected error in calculating average rating" });
     }
 });
-// Route for updating specific properties of a note using PATCH
+ // Route for updating specific properties of a note using PATCH
 app.patch('/saved_notes/update/:id', (req, res) => {
     const id = parseInt(req.params.id);
     const updatedProperties = req.body;
