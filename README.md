@@ -1,4 +1,5 @@
 # cyber_note
+# API Documentation: https://documenter.getpostman.com/view/32354017/2s9YymFjMK 
 # Objective:
 - CyberNote is a comprehensive online note-taking application designed to provide users with a secure, collaborative, and feature-rich platform for organizing their digital notes. Built on the MERN stack (MongoDB, Express.js, React.js, Node.js), CyberNote aims to redefine the note-taking experience by combining a user-friendly interface with advanced features such as real-time collaboration, robust organization tools, and heightened data security. 
 
