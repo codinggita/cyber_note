@@ -10,6 +10,7 @@ import CreateNote from "./screens/CreateNote/CreateNote";
 import SingleNote from "./screens/SingleNote/SingleNote";
 import { useState } from "react";
 import ProfileScreen from "./screens/ProfileScreen/ProfileScreen";
+import About from "./screens/about/about";
 
 function App() {
   const [search, setSearch] = useState("");
@@ -26,6 +27,8 @@ function App() {
           <Route path="/mynotes" element={<MyNotes search={search} />} />
           <Route path="/createnote" element={<CreateNote />} />
           <Route path="/note/:id" element={<SingleNote />} />
+          <Route path="/about" element={<About />} />
+
         </Routes>
       </main>
       <Footer />

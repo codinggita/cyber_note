@@ -94,4 +94,4 @@ const RegisterScreen = () => {
     </MainScreen>
   );
 };
-export default RegisterScr
+export default RegisterScreen;
