@@ -1,6 +1,6 @@
 import { Container, Form, FormControl, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { logout } from "../../actions/userActions";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faUser, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
@@ -10,11 +10,15 @@ const Header = ({ setSearch }) => {
   const navigate = useNavigate();
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
+  const location = useLocation();
 
   const logOutHandler = () => {
     dispatch(logout());
     navigate("/");
   };
+
+  // Check if the current route is one of the restricted routes
+  const isRestrictedPage = ['/', '/login', '/register'].includes(location.pathname);
 
   return (
     <Navbar bg="dark" variant="dark" expand="lg">
@@ -24,17 +28,19 @@ const Header = ({ setSearch }) => {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          {userInfo && (
-            <Form inline className="mr-auto">
-              <FormControl
-                type="text"
-                placeholder="Search"
-                className="mr-sm-2"
-                onChange={(e) => setSearch(e.target.value)}
-              />
-              <FontAwesomeIcon icon={faSearch} className="text-light" />
-            </Form>
-          )}
+          <Nav className="mx-auto">
+            {/* Conditionally render the search bar */}
+            {!isRestrictedPage && (
+              <Form inline>
+                <FormControl
+                  type="text"
+                  placeholder="Search"
+                  className="mr-sm-2"
+                  onChange={(e) => setSearch(e.target.value)}
+                />
+              </Form>
+            )}
+          </Nav>
           <Nav className="ml-auto">
             {userInfo ? (
               <NavDropdown title={<FontAwesomeIcon icon={faUser} />} id="basic-nav-dropdown">
