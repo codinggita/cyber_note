@@ -1,0 +1,33 @@
+.note-card {
+    margin: 10px;
+    padding: 15px; /* Add padding to create space between the cards */
+    border-radius: 10px; /* Add border radius for rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add box shadow for a subtle elevation effect */
+    background-color: #ffffff; /* Add background color for better readability */
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s; /* Include background-color in transition for smoother animation */
+  }
+  
+  .note-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Increase the elevation effect on hover */
+    background-color: linear-gradient(to bottom right, #363636, #2c2c2c); /* Add darker gradient color on hover */
+  }
+  
+  
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .card-title {
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .card-buttons {
+    display: flex;
+  }
+  
+  

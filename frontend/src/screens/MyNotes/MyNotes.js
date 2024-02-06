@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { Accordion, Badge, Button, Card } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import MainScreen from "../../components/MainScreen";
@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteNoteAction, listNotes } from "../../actions/notesActions";
 import Loading from "../../components/Loading";
 import ErrorMessage from "../../components/ErrorMessage";
+import "./MyNotes.css"; // Import your CSS file
+
 
 const MyNotes = ({ search }) => {
   const dispatch = useDispatch();
@@ -47,9 +49,7 @@ const MyNotes = ({ search }) => {
     userInfo,
     successUpdate,
     successDelete,
-  ]);
-
-  return (
+  ]); return (
     <div>
       <MainScreen title={`Welcome ${userInfo?.name?.split(" ")[0]}...`}>
         <Link to="/createnote">
@@ -64,37 +64,26 @@ const MyNotes = ({ search }) => {
         {loading && <Loading />}
         {notes
           ?.reverse()
-          .filter((filterdNote) =>
-            filterdNote.title.toLowerCase().includes(search.toLowerCase())
+          .filter((filteredNote) =>
+            filteredNote.title.toLowerCase().includes(search.toLowerCase())
           )
           .map((note) => (
-            <Accordion defaultActiveKey="0">
-              <Card style={{ margin: 10 }}>
-                <Card.Header style={{ display: "flex"}}>
-                  <span
-                    style={{
-                      color: "black",
-                      textDecoration: "none",
-                      flex: 1,
-                      cursor: "pointer",
-                      alignSelf: "center",
-                      fontSize: 18,
-                      fontWeight: "bold"
-                    }}
-                  >
-                    <Accordion.Header>{note.title}</Accordion.Header>
-                  </span>
-                  <div>
+            <Accordion key={note._id} defaultActiveKey="0">
+              <Card className="note-card">
+                <Card.Header className="card-header">
+                  <span className="card-title">{note.title}</span>
+                  <div className="card-buttons">
                     <Link to={`/note/${note._id}`}>
-                      <Button>Edit</Button>
+                      <Button className="edit-button">Edit</Button>
                     </Link>
                     <Button
                       variant="danger"
-                      className="mx-2"
+                      className="delete-button"
+                      style={{ marginLeft: '10px' }} // Add inline CSS for left margin
                       onClick={() => deleteHandler(note._id)}
-                    >
-                      Delete
+                    >Delete
                     </Button>
+
                   </div>
                 </Card.Header>
                 <Accordion.Body>
