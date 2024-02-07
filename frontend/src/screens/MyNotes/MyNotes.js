@@ -6,8 +6,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteNoteAction, listNotes } from "../../actions/notesActions";
 import Loading from "../../components/Loading";
 import ErrorMessage from "../../components/ErrorMessage";
+import { ToastContainer, toast } from "react-toastify"; // Import ToastContainer and toast
+import "react-toastify/dist/ReactToastify.css"; // Import the CSS for react-toastify
 import "./MyNotes.css"; // Import your CSS file
-
 
 const MyNotes = ({ search }) => {
   const dispatch = useDispatch();
@@ -32,9 +33,8 @@ const MyNotes = ({ search }) => {
   } = noteDelete;
 
   const deleteHandler = (id) => {
-    if (window.confirm("Are you sure?")) {
-      dispatch(deleteNoteAction(id));
-    }
+    toast.success("Note deleted successfully"); // Show success message
+    dispatch(deleteNoteAction(id));
   };
 
   useEffect(() => {
@@ -49,7 +49,9 @@ const MyNotes = ({ search }) => {
     userInfo,
     successUpdate,
     successDelete,
-  ]); return (
+  ]); 
+
+  return (
     <div>
       <MainScreen title={`Welcome ${userInfo?.name?.split(" ")[0]}...`}>
         <Link to="/createnote">
@@ -57,6 +59,7 @@ const MyNotes = ({ search }) => {
             Create a Note
           </Button>
         </Link>
+        <ToastContainer /> {/* Add ToastContainer */}
         {errorDelete && (
           <ErrorMessage variant="danger">{errorDelete}</ErrorMessage>
         )}
@@ -79,7 +82,7 @@ const MyNotes = ({ search }) => {
                     <Button
                       variant="danger"
                       className="delete-button"
-                      style={{ marginLeft: '10px' }} // Add inline CSS for left margin
+                      style={{ marginLeft: '10px' }} 
                       onClick={() => deleteHandler(note._id)}
                     >Delete
                     </Button>
