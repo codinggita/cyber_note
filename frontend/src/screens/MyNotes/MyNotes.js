@@ -55,9 +55,9 @@ const MyNotes = ({ search }) => {
     <div>
       <MainScreen title={`Welcome ${userInfo?.name?.split(" ")[0]}...`}>
         <Link to="/createnote">
-          <Button style={{ marginLeft: 10, marginBottom: 6 }} size="lg">
-            Create a Note
-          </Button>
+        <Button style={{ marginLeft: 10, marginBottom: 20 }} size="lg">
+      Create a Note
+    </Button>
         </Link>
         <ToastContainer /> {/* Add ToastContainer */}
         {errorDelete && (
@@ -65,6 +65,7 @@ const MyNotes = ({ search }) => {
         )}
         {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
         {loading && <Loading />}
+        <div className="notes-container">
         {notes
           ?.reverse()
           .filter((filteredNote) =>
@@ -75,17 +76,26 @@ const MyNotes = ({ search }) => {
               <Card className="note-card">
                 <Card.Header className="card-header">
                   <span className="card-title">{note.title}</span>
+                  <div className="card-info">
+                    <span className="category">
+                      <Badge pill bg="info">{note.category}</Badge>
+                    </span>
+                    <span className="created-date">
+                      Created On: {note.createdAt.substring(0, 10)}
+                    </span>
+                  </div>
                   <div className="card-buttons">
                     <Link to={`/note/${note._id}`}>
                       <Button className="edit-button">Edit</Button>
                     </Link>
                     <Button
-                      variant="danger"
-                      className="delete-button"
-                      style={{ marginLeft: '10px' }} 
-                      onClick={() => deleteHandler(note._id)}
-                    >Delete
-                    </Button>
+                variant="danger"
+                className="delete-button"
+                style={{ marginLeft: '10px' }}  // Inline style to add left margin
+                onClick={() => deleteHandler(note._id)}
+              >
+                Delete
+              </Button>
 
                   </div>
                 </Card.Header>
@@ -107,6 +117,7 @@ const MyNotes = ({ search }) => {
               </Card>
             </Accordion>
           ))}
+          </div>
       </MainScreen>
     </div>
   );
