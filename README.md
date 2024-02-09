@@ -2,6 +2,7 @@
 # netlify link: https://cybernote007.netlify.app/
 # API Documentation: https://documenter.getpostman.com/view/32354017/2s9YymFjMK 
 # Public Figma link: https://www.figma.com/file/l5O5YADfdA4IkPGQ0eoqIi/Untitled?type=design&node-id=0%3A1&mode=design&t=wES3zcMU8XaS0YyY-1
+<video src="https://drive.google.com/file/d/1OuqSyY6nHBDieXlYMqifIuW0YICs56BL/view?usp=sharing">
 # Objective:
 - CyberNote is a comprehensive online note-taking application designed to provide users with a secure, collaborative, and feature-rich platform for organizing their digital notes. Built on the MERN stack (MongoDB, Express.js, React.js, Node.js), CyberNote aims to redefine the note-taking experience by combining a user-friendly interface with advanced features such as real-time collaboration, robust organization tools, and heightened data security. 
 
